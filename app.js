@@ -1,6 +1,5 @@
-let numeroSecreto = generarNumeroSecreto();
-let intentos = 1;
-console.log('numero secreto: '+ numeroSecreto);
+let numeroSecreto = 0;
+let intentos = 0;
 
 function asignarTextoElemento(elemento, texto){
     let elementoHTML = document.querySelector(elemento);
@@ -26,6 +25,27 @@ function verificarIntento() {
     return;
 }
 
+function condicionesIniciales() {
+    asignarTextoElemento('h1','Juego del numero secreto');
+    asignarTextoElemento('p','Indica un numero de 1 a 10');
+    numeroSecreto = generarNumeroSecreto();
+    intentos = 1; 
+    console.log('numero secreto: '+ numeroSecreto);
+}
+
+function reiniciarJuego(){
+    //limpiar caja
+    LimpiarCaja();
+    //Indicar mensaje de intervalo de numeros
+    //Generar el numero aletorio
+     //Inicilizar el numero de intentos
+    condicionesIniciales();
+    //Deshabilitar el boton de nuevo juego
+    document.querySelector('#reiniciar').setAttribute('disabled','true');
+}
+
+condicionesIniciales();
+
 function LimpiarCaja(){
     document.querySelector('#valorUsuario').value = '';
 }
@@ -34,8 +54,7 @@ function generarNumeroSecreto() {
     return Math.floor(Math.random()*10)+1;
 }
 
-asignarTextoElemento('h1','Juego del numero secreto');
-asignarTextoElemento('p','Indica un numero de 1 a 10');
+
 
 
 
