@@ -1,10 +1,17 @@
 let numeroSecreto = generarNumeroSecreto();
-console.log(numeroSecreto);
 
 function asignarTextoElemento(elemento, texto){
     let elementoHTML = document.querySelector(elemento);
     elementoHTML.innerHTML = texto;
     return ;
+}
+
+function verificarIntento() {
+    let numerDeUsuario = parseInt(document.getElementById('valorUsuario').value);
+    console.log(numeroSecreto);
+    console.log(numerDeUsuario);
+    console.log(numeroSecreto === numerDeUsuario);
+    return;
 }
 
 function generarNumeroSecreto() {
