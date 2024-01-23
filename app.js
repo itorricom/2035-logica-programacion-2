@@ -1,5 +1,6 @@
 let numeroSecreto = generarNumeroSecreto();
 let intentos = 1;
+console.log('numero secreto: '+ numeroSecreto);
 
 function asignarTextoElemento(elemento, texto){
     let elementoHTML = document.querySelector(elemento);
@@ -10,9 +11,9 @@ function asignarTextoElemento(elemento, texto){
 function verificarIntento() {
     let numerDeUsuario = parseInt(document.getElementById('valorUsuario').value);
     
-    console.log('intentos: '+ intentos);
     if(numeroSecreto === numerDeUsuario){
         asignarTextoElemento('p',`Acertaste el número en ${intentos} ${(intentos ===1)? 'vez':'veces'}`);
+        document.getElementById('reiniciar').removeAttribute('disabled');
     } else {
         if(numerDeUsuario>numeroSecreto){
             asignarTextoElemento('p','El número secreto es menor');
@@ -20,8 +21,13 @@ function verificarIntento() {
             asignarTextoElemento('p','El número secreto es mayor');
         }
         intentos++;
+        LimpiarCaja();
     }
     return;
+}
+
+function LimpiarCaja(){
+    document.querySelector('#valorUsuario').value = '';
 }
 
 function generarNumeroSecreto() {
